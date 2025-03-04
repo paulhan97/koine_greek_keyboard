@@ -14,9 +14,6 @@ class Cursor:
         self.cursorable = cursorable
         self.position = initial_position
 
-    def place_at(self, new_position: int):
-        self.position = new_position
-
     @property
     def previous_character(self) -> str | None:
         if self.position == 0:
@@ -36,6 +33,12 @@ class Cursor:
     def perform(self, action: CursorAction):
         action.run()
 
+    def place_at(self, new_position: int):
+        self.position = new_position
+
+    def step(self):
+        self.position += 1
+
 
 class AddCharacter(CursorAction):
     def __init__(self, cursor: Cursor, character: str):
@@ -44,3 +47,4 @@ class AddCharacter(CursorAction):
 
     def run(self):
         self.cursor.cursorable.append(self.character)
+        self.cursor.step()
