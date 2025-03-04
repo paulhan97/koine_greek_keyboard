@@ -4,10 +4,12 @@ class Cursorable:
     def __init__(self, initial_content: str = ''):
         self.content = initial_content
 
-    def append(self, to_append: str):
-        self.content += to_append
+    def append_at(self, index: int, to_append: str):
+        self.content += utils.concat([self.content[:index],
+                                      to_append,
+                                      self.content[index:]])
 
-    def replace_at(self, index: int, replace_with: str):
+    def replace_character_at(self, index: int, replace_with: str):
         self.content = utils.concat([self.content[:index],
                                      replace_with,
                                      self.content[index + 1]])
