@@ -19,14 +19,14 @@ class Cursor:
         if self.position == 0:
             return None
         else:
-            return self.cursorable.content[self.position - 1 :]
+            return self.cursorable.content[self.position - 1]
     
     @property
     def next_character(self) -> str | None:
-        if (self.position + 1) == len(self.cursorable.content):
+        if (self.position) == len(self.cursorable.content):
             return None
         else:
-            next_character = self.cursorable.content[self.position : self.position + 1]
+            next_character = self.cursorable.content[self.position - 1 : self.position]
             is_space = next_character == chr(32)
             return None if is_space else next_character
         
