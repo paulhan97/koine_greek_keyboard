@@ -1,0 +1,19 @@
+[project]
+name = "koine_greek_transpiler"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "Paul Han", email = "paul.seungoh.han@gmail.com"},
+]
+dependencies = []
+requires-python = ">=3.12"
+readme = "README.md"
+license = {text = "Unlicensed"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+
+[tool.pdm]
+distribution = true
