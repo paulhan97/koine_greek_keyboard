@@ -18,6 +18,9 @@ build-backend = "pdm.backend"
 [tool.pdm]
 distribution = true
 
+[tool.pdm.scripts]
+all_tests = "pytest"
+
 [dependency-groups]
 test = [
     "pytest>=8.3.5",
