@@ -1,4 +1,4 @@
-import koine_greek_transpiler.common.utils as utils
+import koine_greek_converter.core.utils as utils
 
 class Cursorable:
     def __init__(self, initial_content: str = ''):
@@ -9,10 +9,10 @@ class Cursorable:
 
     def append_at(self, index: int, to_append: str):
         self.content = utils.concat([self.content[:index],
-                                      to_append,
-                                      self.content[index:]])
+                                     to_append,
+                                     self.content[index:]])
 
     def replace_character_at(self, index: int, replace_with: str):
-        self.content = utils.concat([self.content[:index],
+        self.content = utils.concat([self.content[:index - 1],
                                      replace_with,
-                                     self.content[index + 1]])
+                                     self.content[index:]])

@@ -1,4 +1,5 @@
-from koine_greek_transpiler.common.cursorable import Cursorable
+from koine_greek_converter.core.cursorable import Cursorable
+from koine_greek_converter.core.utils import Character
 
 import abc
 
@@ -51,9 +52,28 @@ class AddCharacter(CursorAction):
         self.character = character
 
     def __repr__(self) -> str:
-        return f'AddCharacter(cursor = {self.cursor}, character = {self.character}) implements CursorAction'
+        return Character.SPACE.join([f'AddCharacter(cursor = {self.cursor},',
+                                     f'character = {self.character})',
+                                     'implements CursorAction'])
 
     def run(self):
         self.cursor.cursorable.append_at(index = self.cursor.position,
                                          to_append = self.character)
         self.cursor.step()
+
+
+class ReplacePreviousCharacter(CursorAction):
+    def __init__(self, cursor: Cursor, character: str):
+        if len(character) != 1:
+            raise ValueError('A character must be a string of length 1')
+        self.cursor = cursor
+        self.character = character
+
+    def __repr__(self) -> str:
+        return Character.SPACE.join([f'ReplaceCharacter(cursor = {self.cursor},',
+                                     f'character = {self.character})',
+                                     'implements CursorAction'])
+
+    def run(self):
+        self.cursor.cursorable.replace_character_at(index = self.cursor.position,
+                                                    replace_with = self.character)

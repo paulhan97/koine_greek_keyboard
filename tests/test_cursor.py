@@ -1,5 +1,5 @@
-from koine_greek_transpiler.common.cursor import Cursor, AddCharacter
-from koine_greek_transpiler.common.cursorable import Cursorable
+from koine_greek_converter.core.cursor import Cursor, AddCharacter, ReplacePreviousCharacter
+from koine_greek_converter.core.cursorable import Cursorable
 
 import pytest
 
@@ -13,3 +13,9 @@ def test_add_character(cursor):
     cursor.perform(action)
     assert all([cursor.cursorable.content == 'tesxt',
                 cursor.position == 4])
+    
+def test_replace_character(cursor):
+    action = ReplacePreviousCharacter(cursor, 'x')
+    cursor.perform(action)
+    assert all([cursor.cursorable.content == 'text',
+                cursor.position == 3])
