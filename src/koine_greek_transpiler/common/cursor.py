@@ -14,6 +14,9 @@ class Cursor:
         self.cursorable = cursorable
         self.position = initial_position
 
+    def __repr__(self) -> str:
+        return f'Cursor(cursorable = {self.cursorable}, position = {self.position})'
+
     @property
     def previous_character(self) -> str | None:
         if self.position == 0:
@@ -42,9 +45,12 @@ class Cursor:
 
 class AddCharacter(CursorAction):
     def __init__(self, cursor: Cursor, character: str):
+        if len(character) != 1:
+            raise ValueError('A character must be a string of length 1')
         self.cursor = cursor
         self.character = character
 
     def run(self):
-        self.cursor.cursorable.append(self.character)
+        self.cursor.cursorable.append_at(index = self.cursor.position,
+                                         to_append = self.character)
         self.cursor.step()
