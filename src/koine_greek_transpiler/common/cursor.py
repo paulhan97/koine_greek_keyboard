@@ -50,6 +50,9 @@ class AddCharacter(CursorAction):
         self.cursor = cursor
         self.character = character
 
+    def __repr__(self) -> str:
+        return f'AddCharacter(cursor = {self.cursor}, character = {self.character}) implements CursorAction'
+
     def run(self):
         self.cursor.cursorable.append_at(index = self.cursor.position,
                                          to_append = self.character)
