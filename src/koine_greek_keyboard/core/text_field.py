@@ -1,4 +1,4 @@
-import koine_greek_converter.core.utils as utils
+import koine_greek_keyboard.core.utils as utils
 
 class TextField:
     def __init__(self,

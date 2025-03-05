@@ -1,4 +1,4 @@
-from koine_greek_converter.core.text_field import TextField
+from koine_greek_keyboard.core.text_field import TextField
 
 import pytest
 
