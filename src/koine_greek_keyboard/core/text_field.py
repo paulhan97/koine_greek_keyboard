@@ -12,7 +12,7 @@ class TextField:
                 f'selected_area = {self.selected_area!r}')
     
     def __bool__(self) -> bool:
-        return self.content != ''
+        return bool(self.content)
 
     def insert(self, insert_str: str):
         if isinstance(self.selected_area, int):
