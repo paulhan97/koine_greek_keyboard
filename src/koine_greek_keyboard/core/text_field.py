@@ -8,8 +8,8 @@ class TextField:
         self.selected_area = selected_area
 
     def __repr__(self) -> str:
-        return (f'TextField(content = {self.content})'
-                f'selected_area = {self.selected_area}')
+        return (f'TextField(content = {self.content!r})'
+                f'selected_area = {self.selected_area!r}')
 
     def insert(self, insert_str: str):
         if isinstance(self.selected_area, int):
