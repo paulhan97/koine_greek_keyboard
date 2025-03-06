@@ -10,6 +10,9 @@ class TextField:
     def __repr__(self) -> str:
         return (f'TextField(content = {self.content!r})'
                 f'selected_area = {self.selected_area!r}')
+    
+    def __bool__(self) -> bool:
+        return self.content != ''
 
     def insert(self, insert_str: str):
         if isinstance(self.selected_area, int):
