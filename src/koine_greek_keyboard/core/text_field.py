@@ -27,3 +27,25 @@ class TextField:
         self.content = utils.concat([self.content[:index],
                                      insert_str,
                                      self.content[index:]])
+
+    def replace(self, replace_str: str):
+        pass
+
+    def delete(self):
+        if isinstance(self.selected_area, int):
+            single_cursor_point = self.selected_area
+            self._remove_character_at(single_cursor_point)
+    
+    def backspace(self):
+        if isinstance(self.selected_area, int):
+            single_cursor_point = self.selected_area
+            self._remove_character_at(single_cursor_point - 1)
+            self.step_cursor(reverse=True)
+
+    def _remove_character_at(self, index: int):
+        self.content = utils.concat([self.content[:index],
+                                     self.content[index + 1:]])
+        
+    def step_cursor(self, reverse=False):
+        if isinstance(self.selected_area, int):
+            self.selected_area += -1 if reverse else 1
