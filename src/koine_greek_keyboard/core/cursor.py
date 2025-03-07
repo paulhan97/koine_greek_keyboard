@@ -1,5 +1,3 @@
-from abc import ABC
-
-class Cursor(ABC):
+class SinglePointCursor:
     def __init__(self):
         pass
